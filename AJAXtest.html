@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AJAX Test Page</title>
+    
+<script>
+    //function createXHR()
+    //{
+    //    try {return new XMLHttpRequest();} catch(e){}
+    //    try {return new ActiveXObject("Msxml2.XMLHTTP.6.0");} catch(e) {}
+    //    try {return new ActiveXObject("Msxml2.XMLHTTP.3.0");} catch(e) {}
+    //    try {return new ActiveXObject("Msxml2.XMLHTTP");} catch(e) {}
+    //    try {return new ActiveXObject("Microsoft.XMLHTTP");} catch(e) {}
+    //    alert("XMLHTTPRequest not supported");
+    //    
+    //    return null;
+    //}
+    function sendRequest()
+    {
+        var xhr =  new XMLHttpRequest(); //createXHR();
+        if (xhr)
+        {
+            xhr.open("GET","http://javascriptref.com/3ed/ch15/sayhello.php?rating=5",true);
+            xhr.onreadystatechange = function () {handleResponse(xhr); }
+            xhr.send(null);
+        }
+                
+    }
+    
+    
+    
+    function handleResponse(xhr)
+    {
+//        if (xhr.readyState == 4 && xhr.status == 200)
+//        {
+            var parsedResponse = xhr.responseXML;
+            var msg = parsedResponse.getElementByTagName("responseOutput")[0].firstchild.nodeValue;
+            var responseOutput = document.getElementById("responseOutput");
+            responseOutput.innerHTML = msg;
+//        }
+    }
+    
+    window.onload = function ()
+    {
+        document.getElementById("helloButton").onclick = function () {sendRequest()};
+    }
+</script>
+</head>
+
+<body>
+<form>
+    <input type="button" id="helloButton" value="Say Hello">
+</form>
+
+<br><br>
+<div id="responseOutput">&nbsp</div>
+
+
+</body>
+</html>

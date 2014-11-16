@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Information Systems Test Site</title>
+    <script>
+        function ClientTime()
+        {
+            now = new Date();
+            document.getElementById("TimeDisplay").innerHTML = now.toString();
+        }
+    </script>
+</head>
+
+<body>
+<h1 >Test Web Site</h1>
+<br>
+<h2>Collat School of Business</h2>
+<br>
+<h2>University of Alabama at Birmingham</h2>
+<br>
+<hr>
+<br>
+<button onclick="ClientTime()">Click for the Time on Your Device</button>
+<p id="TimeDisplay"></p>
+
+
+</body>
+</html>

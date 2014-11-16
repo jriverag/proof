@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>ReadyState</title>
+    <script>
+        function sendRequest()
+        {
+            var url = "helloworldslow.php";
+            var readyStateOutput = document.getElementById("readyStateOutput");
+            var xhr = new XMLHttpRequest();
+            if (xhr)
+            {
+                readyStateOutput.innerHTML = "Before Open: " + xhr.readyState + "<br>";
+                xhr.open("GET",url,true);
+                readyStateOutput.innerHTML += "After Open/Before Send: readystate: " + xhr.readyState + "<br>";
+                xhr.onreadystatechange = function () {handleResponse(xhr);};
+                xhr.send(null);
+            }
+        }
+        function handleResponse(xhr)
+        {
+            var readyStateOutput = document.getElementById("readyStateOutput");
+            readyStateOutput.innerHTML += "In onreadyStatechange function: readyState: " + xhr.readyState + "<br>";
+        }
+        window.onload = function () {document.getElementById("requestButton").onclick = sendRequest;};
+    </script>
+</head>
+
+<body>
+<form>
+    <input type="button" id="requestButton" value="Make Request">
+</form>
+<div id="readyStateOutput"></div>
+
+</body>
+</html>

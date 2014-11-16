@@ -1,0 +1,15 @@
+h1 { color: red; background-color: yellow; font-family: 'Comic Sans MS';}
+
+h3 {color: blue; background-color: yellow; font-family:  ' Comic Sans MS';}
+
+nav {color: blue; background-color: yellow; font-family: 'Comic Sans MS';}
+
+table, th, td { border: 1px solid black; border-collapse: collapse;}
+
+th, td {padding: 5px;}
+
+img {padding: 3pt; float: right;}
+
+.hot {color: red; background-color: green;}
+
+.cool {color: white; background-color: red;}

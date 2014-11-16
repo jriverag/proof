@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Test Page 2</title>
+    <link rel="stylesheet" type="text/css" href="styles/teststyle.css" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png" />
+    <script src="js/testscript2.js"></script>
+
+</head>
+
+<body onload="SayHello()">
+ 
+<h1 id="header">List King</h1>
+<h2>Buy Groceries</h2>
+
+<ul>
+    <li id-"one" class="hot"><em>fresh</em> figs</li>
+    <li id-"two" class="hot">pine nuts</li>
+    <li id="three" class="hot">honey</li>
+    <li id-"four">balsamic vinegar</li>
+</ul>
+
+    
+<button onclick="SayHello()">Click Here</button>
+<hr>
+<button onclick="DisplayTime()">Local Time</button>
+
+<p id = "timeitem"> This is a time placeholder.</p>
+
+<button onclick="AddPicture()">Add Picture</button>
+<button onclick="RemovePicture()">Remove Picture</button>
+<button onclick="HidePicture()">Hide Picture</button>
+<button onclick="ShowPicture()">Show Picture</button>
+
+<img id="picDisplay" height="25%" width="25%">
+    
+
+<input type= "text" id="testitem">
+<button type="button" onclick="CopyText()">Copy Text</button>
+    
+<p id= "displayitem">This is a placeholder to display text.</p>
+<hr>
+
+<input type="number" id="item1">
+<br>
+<input type="number" id="item2">
+<br>
+<button onclick="Add()">+</button>
+<button onclick="Subtract()">-</button>
+<button onclick="Multiply()">X</button>
+<button onclick="Divide()">/</button>
+<br>
+<p id="result">Operation Result</p>
+<br>
+    <h2>Web Service Test</h2>
+    
+<input type="text" id="submission">
+    <button onclick="Execute()" id="Submit">Submit Text</button>
+    <button onclick="History()" id="CustOrders">Customer Order History</button>
+    <button onclick="Orders()" id="orders">Customer Orders</button>
+    <br>
+        <p id="demo">This is a placeholder for the Web Service Output</p>
+        
+<button onclick="List()" id="list">List Contents</button>
+<br>
+<p id="listContents">Placeholder for table content list.</p>
+
+<label>Order ID</label> <input type="number" id="orderID"><br>
+<label>Ship Name</label> <input type="text" id="shipName"><br>
+<label>Ship Address</label> <input type="text" id="shipAddress"><br>
+<label>Ship City</label> <input type="text" id="shipCity"><br>
+<label>Ship Post Code</label> <input type="text" id="shipPostcode"><br>
+<button onclick="AddressUpdate()" id="update">Update Shipping Address</button>
+<br>
+<label>Customer ID to Delete: </label><input type="text" id="deleteID">
+<button onclick="DeleteCustomer()" id="CustDelete">Delete Customer</button>
+
+<br>
+<h3>Add a Customer</h3>
+<br>
+<label>Customer ID: </label><input type="text" id="customerID"><br>
+<label>Company Name: </label><input type="text" id="companyName"><br>
+<label>City: </label><input type="text" id="city"><br>
+<button onclick="CreateCustomer()" id="CreateCust">Add Customer</button>
+
+
+</body>
+</html>

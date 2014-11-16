@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Demonstration Web Page</title>
+    <link rel="stylesheet" type="text/css" href="styles/DemoStyle.css" />
+    <script>
+        function ShowDiv1()
+        {
+            var clear = document.getElementById("Div1");
+            clear.style.visibility = "visible";
+            document.getElementById("Div2").style.visibility = "hidden";
+        }
+        
+        function HideDiv1()
+        {
+            var clear = document.getElementById("Div1");
+            clear.style.visibility = "hidden";
+            document.getElementById("Div2").style.visibility = "visible";
+        }
+        function Init()
+        {
+            document.getElementById("Div1").style.visibility = "hidden";
+            document.getElementById("Div2").style.visibility = "hidden";
+        }
+    function List()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://bus-pluto.ad.uab.edu/jsonwebservice/service1.svc/getAllCustomers";
+             
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var output = JSON.parse(xmlhttp.responseText);
+                    GenerateOutput(output);
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            
+            function GenerateOutput(result)
+            {
+            var display = "<table><tr><th>City</th><th>Company Name</th><th>Customer ID</th></tr>";
+            var count = 0;
+            for(count = 0; count < result.GetAllCustomersResult.length; count ++)
+            {
+                display += "<tr><td>" + result.GetAllCustomersResult[count].City + "</td><td>" + result.GetAllCustomersResult[count].CompanyName + "</td><td>" + result.GetAllCustomersResult[count].CustomerID + "</td></tr>";
+            }
+            display += "</table>";
+            document.getElementById("listContents").innerHTML = display;
+            }
+        }
+        function MenuSelection()
+        {
+            var selection = document.getElementById("menulist").value;
+            document.getElementById("selected").innerHTML = selection;
+            
+            if (selection == "Show Div 1")
+            {
+                ShowDiv1();
+            }
+            else if (selection == "Show Div 2")
+            {
+                HideDiv1();
+            }
+        }
+    </script>
+</head>
+
+<body onload="Init()">
+    <header><h1>This is a demonstration web page</h1></header>
+    <hr>
+        <section id="menu">
+            <button onclick="ShowDiv1()" id="div1show">Show Div 1</button>
+            <button onclick="HideDiv1()" id="div1hide">Show Div 2</button>
+            <select onchange="MenuSelection()" id="menulist">
+                <option>Show Div 1</option>
+                <option>Show Div 2</option>
+            </select>
+            <label id="selected"> This is the selected item.</label>
+        </section>
+        
+        <hr>
+        <section id="Div1" class="one">
+          <h2>Demonstration Picture</h2>
+          <img src="images/bluemarble.jpg">
+        </section>
+        <section id="Div2" class="two">
+            <h2>Demonstration Content</h2>
+            <p>This is the time for all good men to come to the aid of their country.</p>
+            <br>
+            <button onclick="List()" id="list">List Contents</button>
+            <br>
+            <p id="listContents">Placeholder for table content list.</p>
+
+        </section>
+    <p>This is a test.</p>
+    <footer>Created by the Grand Poobah.</footer>
+    
+    
+
+
+
+</body>
+</html>

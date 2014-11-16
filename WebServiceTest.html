@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Web Service Test</title>
+    
+    <script type="text/javascript" language="javascript">
+        var myReq = new XMLHttpRequest();
+        
+        function Test()
+        {
+            if (window.XMLHttpRequest)
+            {
+                //var url = "http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary1/Service1/mex?returnString=";
+                //url += "Stuff";
+                myReq.onreadystatechange = CheckStatus2();
+                myReq.open("GET", "http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary1/Service1/mex?returnString=Stuff", true);
+            }
+        }
+        
+        function CheckStatus2()
+        {
+            if (myReq.readyState == 1)
+            {
+                var Display = document.getElementById("output");
+                Display.innerHTML = myReq.statusText;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<br>
+<button id=Test onclick="Test()">Test</button>
+<br>
+<p id="output">Output Goes Here</p>
+
+
+</body>
+</html>

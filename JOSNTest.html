@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>JSON Test Page</title>
+    <script>
+        function Execute()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://138.26.83.181/jsonwebservice/service1.svc/getdata/13";
+            
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var output = JSON.parse(xmlhttp.responseText);
+                    document.getElementById("demo").innerHTML = output.GetDataResult;
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            
+          
+        }
+        
+    </script>
+</head>
+
+<body>
+    
+    <h2>JSON Object Creation in JavaScript</h2>
+    
+    <p id="demo">Demo Text</p>
+    
+   <button onclick="Execute()">Execute</button> 
+
+
+
+</body>
+</html>
