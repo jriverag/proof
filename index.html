@@ -2,102 +2,88 @@
 
 <html>
 <head>
-    <title>Demonstration Web Page</title>
-    <link rel="stylesheet" type="text/css" href="styles/DemoStyle.css" />
-    <script>
-        function ShowDiv1()
-        {
-            var clear = document.getElementById("Div1");
-            clear.style.visibility = "visible";
-            document.getElementById("Div2").style.visibility = "hidden";
-        }
-        
-        function HideDiv1()
-        {
-            var clear = document.getElementById("Div1");
-            clear.style.visibility = "hidden";
-            document.getElementById("Div2").style.visibility = "visible";
-        }
-        function Init()
-        {
-            document.getElementById("Div1").style.visibility = "hidden";
-            document.getElementById("Div2").style.visibility = "hidden";
-        }
-    function List()
-        {
-            var xmlhttp = new XMLHttpRequest();
-            var url = "http://bus-pluto.ad.uab.edu/jsonwebservice/service1.svc/getAllCustomers";
-             
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    var output = JSON.parse(xmlhttp.responseText);
-                    GenerateOutput(output);
-                }
-            }
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-            
-            function GenerateOutput(result)
-            {
-            var display = "<table><tr><th>City</th><th>Company Name</th><th>Customer ID</th></tr>";
-            var count = 0;
-            for(count = 0; count < result.GetAllCustomersResult.length; count ++)
-            {
-                display += "<tr><td>" + result.GetAllCustomersResult[count].City + "</td><td>" + result.GetAllCustomersResult[count].CompanyName + "</td><td>" + result.GetAllCustomersResult[count].CustomerID + "</td></tr>";
-            }
-            display += "</table>";
-            document.getElementById("listContents").innerHTML = display;
-            }
-        }
-        function MenuSelection()
-        {
-            var selection = document.getElementById("menulist").value;
-            document.getElementById("selected").innerHTML = selection;
-            
-            if (selection == "Show Div 1")
-            {
-                ShowDiv1();
-            }
-            else if (selection == "Show Div 2")
-            {
-                HideDiv1();
-            }
-        }
-    </script>
+    <title>Test Page 2</title>
+    <link rel="stylesheet" type="text/css" href="styles/teststyle.css" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png" />
+    <script src="js/testscript2.js"></script>
+
 </head>
 
-<body onload="Init()">
-    <header><h1>This is a demonstration web page</h1></header>
-    <hr>
-        <section id="menu">
-            <button onclick="ShowDiv1()" id="div1show">Show Div 1</button>
-            <button onclick="HideDiv1()" id="div1hide">Show Div 2</button>
-            <select onchange="MenuSelection()" id="menulist">
-                <option>Show Div 1</option>
-                <option>Show Div 2</option>
-            </select>
-            <label id="selected"> This is the selected item.</label>
-        </section>
+<body onload="SayHello()">
+ 
+<h1 id="header">List King</h1>
+<h2>Buy Groceries</h2>
+
+<ul>
+    <li id-"one" class="hot"><em>fresh</em> figs</li>
+    <li id-"two" class="hot">pine nuts</li>
+    <li id="three" class="hot">honey</li>
+    <li id-"four">balsamic vinegar</li>
+</ul>
+
+    
+<button onclick="SayHello()">Click Here</button>
+<hr>
+<button onclick="DisplayTime()">Local Time</button>
+
+<p id = "timeitem"> This is a time placeholder.</p>
+
+<button onclick="AddPicture()">Add Picture</button>
+<button onclick="RemovePicture()">Remove Picture</button>
+<button onclick="HidePicture()">Hide Picture</button>
+<button onclick="ShowPicture()">Show Picture</button>
+
+<img id="picDisplay" height="25%" width="25%">
+    
+
+<input type= "text" id="testitem">
+<button type="button" onclick="CopyText()">Copy Text</button>
+    
+<p id= "displayitem">This is a placeholder to display text.</p>
+<hr>
+
+<input type="number" id="item1">
+<br>
+<input type="number" id="item2">
+<br>
+<button onclick="Add()">+</button>
+<button onclick="Subtract()">-</button>
+<button onclick="Multiply()">X</button>
+<button onclick="Divide()">/</button>
+<br>
+<p id="result">Operation Result</p>
+<br>
+    <h2>Web Service Test</h2>
+    
+<input type="text" id="submission">
+    <button onclick="Execute()" id="Submit">Submit Text</button>
+    <button onclick="History()" id="CustOrders">Customer Order History</button>
+    <button onclick="Orders()" id="orders">Customer Orders</button>
+    <br>
+        <p id="demo">This is a placeholder for the Web Service Output</p>
         
-        <hr>
-        <section id="Div1" class="one">
-          <h2>Demonstration Picture</h2>
-          <img src="images/bluemarble.jpg">
-        </section>
-        <section id="Div2" class="two">
-            <h2>Demonstration Content</h2>
-            <p>This is the time for all good men to come to the aid of their country.</p>
-            <br>
-            <button onclick="List()" id="list">List Contents</button>
-            <br>
-            <p id="listContents">Placeholder for table content list.</p>
+<button onclick="List()" id="list">List Contents</button>
+<br>
+<p id="listContents">Placeholder for table content list.</p>
 
-        </section>
-    <p>This is a test.</p>
-    <footer>Created by the Grand Poobah.</footer>
-    
-    
+<label>Order ID</label> <input type="number" id="orderID"><br>
+<label>Ship Name</label> <input type="text" id="shipName"><br>
+<label>Ship Address</label> <input type="text" id="shipAddress"><br>
+<label>Ship City</label> <input type="text" id="shipCity"><br>
+<label>Ship Post Code</label> <input type="text" id="shipPostcode"><br>
+<button onclick="AddressUpdate()" id="update">Update Shipping Address</button>
+<br>
+<label>Customer ID to Delete: </label><input type="text" id="deleteID">
+<button onclick="DeleteCustomer()" id="CustDelete">Delete Customer</button>
 
+<br>
+<h3>Add a Customer</h3>
+<br>
+<label>Customer ID: </label><input type="text" id="customerID"><br>
+<label>Company Name: </label><input type="text" id="companyName"><br>
+<label>City: </label><input type="text" id="city"><br>
+<button onclick="CreateCustomer()" id="CreateCust">Add Customer</button>
 
 
 </body>
